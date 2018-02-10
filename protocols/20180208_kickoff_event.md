@@ -25,7 +25,7 @@
         - Data Visualization on the XX.XX.2018 19:00 _(Moderated by Mandy)_
         - Exploratory Data Analysis on the XX.XX.2018 19:00 _(Moderated by Björn)_
         - Machiene Learning on the XX.XX.2018 19:00 _(Moderated by Nico)_
-        - **yet unknown** on the XX.XX.2018 19:00 _(Moderated by Nico)_
+        - RMarkdown on the XX.XX.2018 19:00 _(Moderated by Valentin)_
         - **yet unknown** on the XX.XX.2018 19:00 _(Moderated by **yet unknown**)_
         - **yet unknown** on the XX.XX.2018 19:00 _(Moderated by **yet unknown**)_
     - Ask for volunteers to moderate Meetup Topics 
