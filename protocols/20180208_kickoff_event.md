@@ -12,6 +12,7 @@
     - Real-life applications of R / Examples _(Moderated by Björn)_
         - Example from: magnolia psychometrics GmbH
         - Example of an awesome larger project
+        - Example: [Using R to prevent food poisoning in Chicago](http://blog.revolutionanalytics.com/2016/12/food-inspection-forecasting.html)
 3. Outline
     - What to expect from R-Meetups
         - Goals: Networking, Insights and Learning
