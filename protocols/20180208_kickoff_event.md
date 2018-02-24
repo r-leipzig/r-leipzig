@@ -35,8 +35,8 @@
     - Open End
 
 ## To do before 1th of March 2018
-- Book Basislager facilities for kick-off event and R-Meetups _(Owned by Björn)_
-- Write invitations for Meetup Group and Mailing lists _(Owned by Mandy)_
+- ~~Book Basislager facilities for kick-off event and R-Meetups _(Owned by Björn)_~~
+- ~~Write invitations for Meetup Group and Mailing lists _(Owned by Mandy)_~~
 - Maybe produce some kind of flyer?  _(Owned by Valentin?)_
 - Advertise the event  _(Owned by everyone)_
 - Produce content for powerpoint slides and send it to Björn _(Owned by everyone for their own section)_
