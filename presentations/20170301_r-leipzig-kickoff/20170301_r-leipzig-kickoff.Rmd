@@ -11,9 +11,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
     css: [default, custom.css, hygge, default-fonts]
-    #css: [default, metropolis, metropolis-fonts]
-    #css: [default, rladies, rladies-fonts]
-    #css: [default, tamu, tamu-fonts]
+  
 ---
 
 ```{r setup, include=FALSE}
