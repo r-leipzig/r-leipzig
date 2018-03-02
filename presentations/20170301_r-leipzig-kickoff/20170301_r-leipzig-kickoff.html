@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>R Statistical Computing Leipzig</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Mandy Vogel, Valentin Stefan, Nico Scherf &amp; Björn Hommel" />
+    <meta name="date" content="2018-03-01" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# R Statistical Computing Leipzig
+## Kickoff-Event
+### Mandy Vogel, Valentin Stefan, Nico Scherf &amp; Björn Hommel
+### 2018-03-01
+
+---
+
+
+
+
+# Agenda
+
+.pull-left[
+  
+1. Brief introduction to R
+
+2. Real-world applications
+
+3. Meetups in 2018
+
+4. Open end
+
+]
+
+.pull-right[
+
+&lt;img src="assets/img/statistics-shark.gif"  style="height: 400px"/&gt;
+
+]  
+
+---
+# _What topics are you interested in?_
+_Please provide as many ideas as possible to help us make future meetups fun and engaging!_
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; x &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; freq &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Data Visualization &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Exploratory Data Analysis &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Time Series Analysis &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Data Screening &amp;amp; Cleaning &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R and Databases &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Machine Learning &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Reporting with R Markdown/Sweave/Reproducible Research &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bayes: R and BUGS/JAGS/Stan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Image Processing &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Statistical Inference (e.g. Natural Language Processing) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# _R-Leipzig Member Survey_
+
+.small[
+```
+require(RCurl)
+require(plyr)
+
+dataCSV &lt;- getURL('https://docs.google.com/spreadsheets/d/e/2PACX-1vSWD6_CABXMzqs5lA6_XjiPhJBpRf8zrgYzZ7AjQA5NJQy_e3_rcMvep1bK3SFAsVWGGpdRyMTsqwa4/pub?gid=532789309&amp;single=true&amp;output=csv')
+df &lt;- read.csv(textConnection(dataCSV), stringsAsFactors = FALSE)
+
+topics &lt;- unlist(df$topics)
+topics &lt;- unlist(strsplit(topics, ','))
+topics &lt;- plyr::count(topics)
+topics &lt;- topics[order(topics$freq, decreasing = TRUE),]
+
+knitr::kable(head(topics, 10), format = 'html')
+```
+]
+---
+# _How would you rate your experience level?_
+
+.center[
+![](20170301_r-leipzig-kickoff_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+]
+
+---
+# _Do you have a background in one or more of the following sciences?_
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; x &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; freq &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Data Sciences &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Healthcare) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Logic) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Formal Sciences (e.g. Mathematics &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Genetics) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Economics) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Sociology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Life Sciences (e.g. Biochemistry &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Social Sciences (e.g. Psychology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Applied Sciences (e.g. Engineering &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+class: inverse, center, middle
+
+# Introduction to R
+
+---
+
+class: center, middle
+
+# Why use R?
+A quick comparison to other languages
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" style="width: 25%"/&gt;
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/486px-Python_logo_and_wordmark.svg.png"/&gt;
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Julia_prog_language.svg/512px-Julia_prog_language.svg.png" style="width: 25%"/&gt;
+
+---
+class: center, middle
+
+&gt; "The best thing about `R` is that it was written by statisticians."
+
+
+--
+
+_while_
+
+
+&gt; "The worst thing about `R` is that it was written by statisticians."
+
+---
+class: middle
+
+.pull-left[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" style="height: 50px"/&gt;
+
+- better, user friendly data analysis
+
+- easy to use complex formula and advanced models
+
+- steep learning curve (not hard for experienced programmers)
+
+- good for standalone analysis
+
+- the closer you are to statistics and research the more you might prefer R
+]
+
+.pull-right[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/486px-Python_logo_and_wordmark.svg.png" style="height: 50px"/&gt;
+
+- productivity and code reusability
+
+- more flexible to program new stuff
+
+- easy to learn for beginners
+
+- good for analysis integrated into larger frameworks
+
+- the closer you are to engineering, the more you might prefer python
+]
+
+---
+class: middle
+
+.pull-left[
+
+- **Visualisation**
+
+- Lingua franca of statistics
+
+- Traditional computational statistics (machine learning)
+
+- **Data exploration**
+
+- R Studio
+
+- Shiny
+
+]
+
+.pull-right[
+&lt;img src="assets/img/ggplot2-example.png"/&gt;
+.small[https://hrbrmstr.github.io/hrbrthemes/]
+]
+
+---
+class: center, middle
+
+&lt;img src="assets/img/switzerland-example.png"/&gt;
+.small[https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/]
+
+---
+class: middle
+
+.pull-left[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" style="height: 50px"/&gt;
+
+- slow (and sometimes ugly) code
+
+- steep learning curve
+]
+
+.pull-right[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/486px-Python_logo_and_wordmark.svg.png" style="height: 50px"/&gt;
+
+- producing nice visualisations can be a pain
+
+- immature functionality for data analysis
+]
+
+---
+class: center, middle
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" style="height: 50px"/&gt;
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/486px-Python_logo_and_wordmark.svg.png" style="height: 50px"/&gt;
+
+
+Open Source
+
+Advanced Tools
+
+Online Communities
+
+Jobs
+
+---
+
+class: middle
+
+.pull-left[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" style="height: 50px"/&gt;
+
+- _interesting_ language design
+
+- good for statistics heavy projects
+
+- large ecosystem of packages
+
+- mature system
+
+- native code rather slow
+
+]
+
+.pull-right[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Julia_prog_language.svg/220px-Julia_prog_language.svg.png" style="height: 50px"/&gt;
+
+- clean language design
+
+- number crunching
+
+- developing ecosystem
+
+- &lt; v1.0
+
+- native code fast
+]
+
+---
+class: center, middle
+
+&lt;img src="assets/img/julia-benchmark.png"/&gt;
+
+---
+class: center, middle
+# From my perspective
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" style="width: 75px"/&gt; for reliable statistical analysis (smaller scale)
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/486px-Python_logo_and_wordmark.svg.png" style="width: 75px"/&gt; for larger data analysis/Deep Learning projects
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Julia_prog_language.svg/220px-Julia_prog_language.svg.png" style="width: 75px"/&gt; for new, experimental ideas (and fun)
+
+---
+
+class: center, middle
+
+&lt;img src="assets/img/lan-interactions-01.png"/&gt;
+
+---
+
+class: center, middle
+
+&lt;img src="assets/img/lan-interactions-02.png"/&gt;
+
+---
+
+class: center, middle
+
+&lt;img src="assets/img/lan-interactions-03.png"/&gt;
+
+---
+class: inverse, center, middle
+
+# Real-world applications
+
+---
+class: center, middle
+
+.left[
+&lt;img src="https://www.magnolia-psychometrics.com/images/logo.png" style="height: 50px"/&gt;
+
+Case 1: [magnolia psychometrics](https://www.magnolia-psychometrics.com/) predictive personality testing
+]
+
+&lt;img src="assets/img/magnolia-screenshot-01.png"/&gt;
+
+
+---
+
+class: center, middle
+
+.left[
+&lt;img src="https://www.magnolia-psychometrics.com/images/logo.png" style="height: 50px"/&gt;
+
+Case 1: [magnolia psychometrics](https://www.magnolia-psychometrics.com/) predictive personality testing
+]
+
+&lt;img src="assets/img/magnolia-screenshot-02.png"/&gt;
+
+---
+
+class: center, middle
+
+.left[
+&lt;img src="https://www.magnolia-psychometrics.com/images/logo.png" style="height: 50px"/&gt;
+
+Case 1: [magnolia psychometrics](https://www.magnolia-psychometrics.com/) predictive personality testing
+]
+
+&lt;img src="assets/img/magnolia-screenshot-03.png"/&gt;
+
+---
+
+class: center, middle
+
+.left[
+&lt;img src="https://www.magnolia-psychometrics.com/images/logo.png" style="height: 50px"/&gt;
+
+Case 1: [magnolia psychometrics](https://www.magnolia-psychometrics.com/) predictive personality testing
+]
+
+&lt;img src="assets/img/magnolia-screenshot-04.png"/&gt;
+
+---
+
+Case 2: [Using R to prevent food poisoning in Chicago](http://blog.revolutionanalytics.com/2016/12/food-inspection-forecasting.html)
+
+.center[
+&lt;img src="http://www.assignmentpoint.com/wp-content/uploads/2017/04/Food-Poisoning0.jpg" style="height: 100px"/&gt;
+]
+
+Foodborne illness in the U.S.
+
+- **48 million** people get sick
+- **128,000** get hospitalized
+- **3,000** die
+
+according to the center for disease control and prevention. The situation in the City of **Chicago** was particularly bad. Something had to be done... 
+
+---
+
+Case 2: [Using R to prevent food poisoning in Chicago](http://blog.revolutionanalytics.com/2016/12/food-inspection-forecasting.html)
+
+To predict the probability of food establishmentsto have critical violations, data scientists looked at...
+
+```yaml
+Business Licenses
+Food Inspections 
+Crime
+Garbage Cart Complaints
+Sanitation Complaints
+Weather
+Sanitarian Information
+```
+
+---
+
+Case 2: [Using R to prevent food poisoning in Chicago](http://blog.revolutionanalytics.com/2016/12/food-inspection-forecasting.html)
+
+...and increased the rate of detecting violations by **25%**
+
+.center[
+&lt;img src="assets/img/chicago-example.png" style="height: 500px"/&gt;
+]
+
+
+---
+
+Case 2: [Using R to prevent food poisoning in Chicago](http://blog.revolutionanalytics.com/2016/12/food-inspection-forecasting.html)
+
+For data processing the code uses extensivelythe `data.table` package.
+
+
+```yaml
+## Calcualte time since last inspection.
+## If the time is NA, this means it's the first inspection; add an inicator 
+## variable to indicate that it's the first inspection.
+dat_model[i = TRUE , 
+          j = timeSinceLast := as.numeric(
+              Inspection_Date - shift(Inspection_Date, -1, NA)) / 365, 
+          by = License]
+dat_model[ , firstRecord := 0]
+dat_model[is.na(timeSinceLast), firstRecord := 1]
+dat_model[is.na(timeSinceLast), timeSinceLast := 2]
+dat_model[ , timeSinceLast := pmin(timeSinceLast, 2)]
+```
+
+All code available on [GitHub](https://github.com/Chicago/food-inspections-evaluation)
+
+---
+
+class: inverse, center, middle
+
+# R-Meetups in 2018
+
+---
+
+# What to expect from R-Meetups
+
+Goals
+  - Networking
+  - Interdisciplinary Insights
+  - Practical Learning
+  
+--
+
+Outline
+
+|                    |                                                |            |
+|--------------------|------------------------------------------------|------------|
+| Topic introduction | _see scheduled topics_                         | (~15 mins) |
+| Code practice      | _attempt to solve the problem in small groups_ | (~60 mins) |
+| Stand-ups          | _tell us about your projects and/or probelms_  | -          |
+| Open end           | _code, network or drink beer_                  | -          |
+
+---
+
+# Dataset
+
+[Speed Dating Experiment](https://www.kaggle.com/annavictoria/speed-dating-experiment): _What attributes influence the selection of a romantic partner?_
+
+Data from experimental speed dating events from 2002-2004, availible on [kaggle](https://www.kaggle.com) (_N_ ~ 8,000 observations)
+
+--
+
+Data Exploration Ideas
+- What are the least desirable attributes in a male partner? Does this differ for female partners?
+- Can people accurately predict their own perceived value in the dating market?
+- ...
+
+---
+class: center, middle
+
+_"The Ugly Truth of People Decisions in Speed Dating"_
+
+&lt;img src="assets/img/speedating-example.png" style="height: 500px"/&gt;
+
+.small[
+[Insighty by James Hwang, Lucas Cadalzo](https://www.kaggle.com/jph84562/the-ugly-truth-of-people-decisions-in-speed-dating)
+]
+
+---
+# Save the date
+
+| topic                     | date              | moderator          |
+|---------------------------|-------------------|--------------------|
+| Data Visualization        | 16th April, 19:00 | by Mandy Vogel     |
+| Exploratory Data Analysis | 21th May, 19:00   | by Björn Hommel    |
+| Machiene Learning         | 18th June, 19:00  | by Nico Scherf     |
+| RMarkdown                 | 16th July, 19:00  | by Valentin Stefan |
+| _yet to be decided_       | -                 | by _you?_          |
+| _yet to be decided_       | -                 | by _you?_          |
+| _yet to be decided_       | -                 | by _you?_          |
+
+- Volunteers?
+
+---
+# Resources
+
+- Updates about meetups on [meetup.com](https://www.meetup.com/Leipzig-R-statistical-computing/)
+
+- r-leipzig's projects &amp; presentations on [GitHub](https://github.com/r-leipzig/r-leipzig/)
+
+- r-leipzig on [slack](https://r-leipzig.slack.com/) for r-related exchange
+
+- Speed-Dating dataset on [kaggle](https://www.kaggle.com/annavictoria/speed-dating-experiment)
+
+---
+
+class: center, middle
+
+# Thanks!
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
